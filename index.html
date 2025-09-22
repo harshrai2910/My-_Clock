@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        #clock {
+            margin: auto;
+            height: 40vw;
+            width: 40vw;
+            background: url(clock.png);
+            background-size: cover;
+            position: relative;
+            border: 5px solid black;
+            border-radius: 50%;
+        }
+
+        #hour,
+        #minute,
+        #second {
+            position: absolute;
+            transform-origin: bottom;
+        }
+
+        #hour {
+            height: 24%;
+            width: 1%;
+            top: 10vw;
+            background-color: black;
+            border-radius: 10vw;
+            right: 20vw;
+
+        }
+
+        #minute {
+            height: 30%;
+            width: 1%;
+            top: 8vw;
+            background-color: black;
+            border-radius: 10vw;
+            right: 20vw;
+        }
+
+        #second {
+            height: 37.5%;
+            width: 1%;
+            top: 5vw;
+            background-color: black;
+            border-radius: 10vw;
+            right: 20vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <script>
+        const hour = document.getElementById("hour");
+        const minute = document.getElementById("minute");
+        const second = document.getElementById("second");
+
+        setInterval(() => {
+            d = new Date()
+            htime = d.getHours()
+            mtime = d.getMinutes()
+            stime = d.getSeconds()
+
+            Hrotation = 30 * htime + mtime / 2
+            Mrotation = 6 * mtime
+            Srotation = 6 * stime
+
+            hour.style.transform = `rotate(${Hrotation}deg)`
+            minute.style.transform = `rotate(${Mrotation}deg)`
+            second.style.transform = `rotate(${Srotation}deg)`
+        }, 1000)
+    </script>
+</body>
+
+</html>
